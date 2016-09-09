@@ -1,10 +1,22 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Matrix inversion is usually a costly computation and there may 
+## be some benefit to caching the inverse of a matrix rather than 
+## compute it repeatedly (there are also alternatives to matrix inversion
+## that we will not discuss here). Your assignment is to write a pair of 
+## functions that cache the inverse of a matrix.
 
-## Write a short comment describing this function
+# makeCacheMatrix: 
+# This function creates a special "matrix" object that can cache its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
-
+        a <- NULL
+        set <- function(y){
+                x <<- y
+                a <<- NULL
+        }
+        get <- function()x
+        setinverse <- function(solve) a <<- solve
+        getinverse <- function() a
+        list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
 
 
